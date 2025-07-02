@@ -1,9 +1,26 @@
 
-from OpenGL.GL import *
-from OpenGL.GLUT import *
-from OpenGL.GLU import *
+from OpenGL.GL import (
+    glClear, glClearColor, glEnable, glMatrixMode,
+    glLoadIdentity, glBegin, glEnd, glVertex3f, glGetDoublev,
+    glGetIntegerv, glTexImage2D, glTexParameteri, glBindTexture,
+    glGenTextures, glTexCoord2f, glColor3f, glLineWidth, glDisable,
+    GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT, GL_PROJECTION,
+    GL_VIEWPORT, GL_MODELVIEW_MATRIX, GL_PROJECTION_MATRIX,
+    GL_TEXTURE_2D, GL_UNSIGNED_BYTE, GL_RGBA, GL_LINEAR, GL_TEXTURE_MIN_FILTER,
+    GL_TEXTURE_MAG_FILTER, GL_QUADS, GL_LINE_LOOP, GL_MODELVIEW,
+    GL_DEPTH_TEST
+)
+from OpenGL.GLUT import (
+    glutInit, glutInitDisplayMode, glutInitWindowSize,
+    glutCreateWindow, glutDisplayFunc, glutMainLoop,
+    glutSwapBuffers, glutTimerFunc, glutPostRedisplay,
+    glutGet, glutKeyboardFunc, glutMotionFunc, glutMouseFunc, glutFullScreen,
+    GLUT_DOWN, GLUT_LEFT_BUTTON, GLUT_WINDOW_HEIGHT, GLUT_UP,
+    GLUT_DEPTH, GLUT_RGBA, GLUT_DOUBLE, GL_DEPTH_TEST
+)
+from OpenGL.GLU import gluPerspective, gluLookAt, gluProject, gluUnProject
 from PIL import Image
-import threading, time, math, sys, os, traceback
+import math, sys, os, traceback
 import pygame
 
 # ---------- Parámetros globales ----------
@@ -14,7 +31,7 @@ ERROR_MARGIN_PX  = 15                  # Margen de error para mover vertices
 SEQ_PREFIX       = "Image_"           # Image_0.png … Image_N.png
 ANIM_START_FRAME = 5
 
-AUDIO_FILE       = "minecraft-footsteps.wav"
+AUDIO_FILE       = "minecraft-footsteps."
 EDGE_THICKNESS   = 4
 EDGE_COLOR       = (1.0, 1.0, 0.0)
 # ----------------------------------------
@@ -49,7 +66,7 @@ def init_audio():
     pygame.mixer.init()
     global sound, channel
     sound = pygame.mixer.Sound(AUDIO_FILE)
-    channel = pygame.mixer.Channel(0)  # usa canal 0 para reproducir
+    channel = pygame.mixer.Channel(0)
 
 def play_sound():
     if not pygame.mixer.get_init():
