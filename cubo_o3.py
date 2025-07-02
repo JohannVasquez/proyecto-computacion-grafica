@@ -16,7 +16,7 @@ from OpenGL.GLUT import (
     glutSwapBuffers, glutTimerFunc, glutPostRedisplay,
     glutGet, glutKeyboardFunc, glutMotionFunc, glutMouseFunc, glutFullScreen,
     GLUT_DOWN, GLUT_LEFT_BUTTON, GLUT_WINDOW_HEIGHT, GLUT_UP,
-    GLUT_DEPTH, GLUT_RGBA, GLUT_DOUBLE, GL_DEPTH_TEST
+    GLUT_DEPTH, GLUT_RGBA, GLUT_DOUBLE
 )
 from OpenGL.GLU import gluPerspective, gluLookAt, gluProject, gluUnProject
 from PIL import Image
@@ -31,7 +31,7 @@ ERROR_MARGIN_PX  = 15                  # Margen de error para mover vertices
 SEQ_PREFIX       = "Image_"           # Image_0.png … Image_N.png
 ANIM_START_FRAME = 5
 
-AUDIO_FILE       = "minecraft-footsteps."
+AUDIO_FILE       = "minecraft-footsteps.mp3"
 EDGE_THICKNESS   = 4
 EDGE_COLOR       = (1.0, 1.0, 0.0)
 # ----------------------------------------
